@@ -1,11 +1,17 @@
-service: serverless-google
+service: my-service
 
 provider:
   name: google
   runtime: nodejs
-  project: my-project
+  stage: ${opt:stage, self:custom.defaultStage}
+  project: ${self:custom.otherfile.environment.${self:provider.stage}.PROJECT_ID}
   # the path to the credentials file needs to be absolute
-  credentials: ~/.gcloud/keyfile.json
+  credentials: ${self:custom.otherfile.environment.${self:provider.stage}.CREDENTIALS_FILE_PATH}
+custom:
+  defaultStage: dev
+  otherfile:
+    environment:
+      dev: ${file(./conf/dev.yml)}
 
 plugins:
   - serverless-google-cloudfunctions
@@ -20,7 +26,7 @@ package:
 
 functions:
   first:
-    handler: http
+    handler: myhook
     events:
       - http: path
 

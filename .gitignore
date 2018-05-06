@@ -39,3 +39,6 @@ node_modules
 # private info
 conf/dev.yml
 account.json
+
+# dist dir
+dist

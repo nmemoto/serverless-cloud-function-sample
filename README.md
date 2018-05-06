@@ -10,6 +10,8 @@
     * `config/sample.yml` にサンプルファイルを記載
 * Cloud Functions API の有効化
     * コンソールで有効化の操作を行った
+* babel 関連のインストールコマンドが古かったため、以下を実施
+    * `npm install --save-dev babel-cli babel-core babel-preset-env` 
 
 ## 調べたこと
 * 2018/5/6 現在の以下のページによると, Cloud Functions の Node.js の実行環境は *Node v6.11.5* である
